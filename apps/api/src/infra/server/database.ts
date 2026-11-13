@@ -8,15 +8,15 @@ interface IDBArray {
   token: string;
 }
 
-export default async function setupDB(): Promise<void> {
-  const databases: IDBArray[] = [
-    {
-      enabled: true,
-      label: '[PG] Database Fluxo30 is connected',
-      token: 'PGFluxo30DataSource',
-    },
-  ];
+const databases: IDBArray[] = [
+  {
+    enabled: true,
+    label: '[PG] Database Fluxo30 is connected',
+    token: 'PGFluxo30DataSource',
+  },
+];
 
+export default async function setupDB(): Promise<void> {
   for (const { enabled, label, token } of databases) {
     if (!enabled) continue;
 
@@ -29,5 +29,24 @@ export default async function setupDB(): Promise<void> {
         error,
       );
     }
+  }
+}
+
+export async function teardownDB(): Promise<void> {
+  let failed = false;
+
+  for (const { enabled, token } of databases) {
+    if (!enabled) continue;
+
+    try {
+      await container.resolve<TypeORMDataSource>(token).disconnectFromDB();
+    } catch (error) {
+      failed = true;
+      console.log(`[PG] Database disconnect failed (${token})`, error);
+    }
+  }
+
+  if (failed) {
+    throw new Error('One or more database disconnects failed');
   }
 }
