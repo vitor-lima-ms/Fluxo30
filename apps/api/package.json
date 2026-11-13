@@ -1,4 +1,10 @@
 {
+  "type": "module",
+  "imports": {
+    "#app/*": "./dist/app/*.js",
+    "#infra/*": "./dist/infra/*.js",
+    "#shared/*": "./dist/shared/*.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc && tsc --watch --preserveWatchOutput && nodemon",
