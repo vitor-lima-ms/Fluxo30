@@ -1,7 +1,6 @@
 import HTTP from 'http';
 import { isAxiosError } from 'axios';
 import { isCelebrateError } from 'celebrate';
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextFunction, Request, Response } from 'express';
 
 import AppError from '#app/errors/AppError';
@@ -9,8 +8,11 @@ import AppHttpError from '#app/errors/AppHttpError';
 
 export default async function errorHandler(
   error: Error,
-  _: Request,
+  // @ts-expect-error The req var will be used in the future to register logs
+  req: Request,
   res: Response,
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  _: NextFunction,
 ): Promise<Response> {
   if (isCelebrateError(error)) {
     const statusCode = 422;

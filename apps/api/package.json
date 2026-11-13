@@ -7,7 +7,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && tsc --watch --preserveWatchOutput && nodemon",
+    "dev": "tsc --watch --preserveWatchOutput & nodemon",
+    "start": "node dist/index.js",
     "format": "prettier --config .prettierrc src",
     "format:check": "prettier --config .prettierrc --check src",
     "lint": "eslint --config eslint.config.mts src",
