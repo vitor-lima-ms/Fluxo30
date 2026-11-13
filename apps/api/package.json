@@ -2,7 +2,10 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc && tsc --watch --preserveWatchOutput && nodemon",
-    "lint": "eslint src"
+    "format": "prettier --config .prettierrc src",
+    "format:check": "prettier --config .prettierrc --check src",
+    "lint": "eslint --config eslint.config.mts src",
+    "lint:fix": "eslint --config eslint.config.mts --fix src"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
