@@ -3,3 +3,8 @@ AGENTS.md
 
 # Cursor
 .cursor/
+
+# Node
+.env
+dist/
+node_modules/
