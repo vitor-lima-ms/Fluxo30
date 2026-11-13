@@ -1,6 +1,7 @@
 import HTTP from 'http';
 import { isAxiosError } from 'axios';
 import { isCelebrateError } from 'celebrate';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextFunction, Request, Response } from 'express';
 
 import AppError from '#app/errors/AppError';
