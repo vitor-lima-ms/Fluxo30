@@ -1,0 +1,24 @@
+name: Somente staging
+
+on:
+  pull_request_target:
+    branches:
+      - main
+
+jobs:
+  origem-staging:
+    name: Branch à ser mergeada é staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exigir a branch staging deste repositório
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
+        run: |
+          if [ "$HEAD_REPO" != "$BASE_REPO" ] || [ "$HEAD_REF" != "staging" ]; then
+            echo "A main só aceita pull request da branch staging deste repositório."
+            echo "Origem recebida: ${HEAD_REPO}@${HEAD_REF}"
+            exit 1
+          fi
+      
