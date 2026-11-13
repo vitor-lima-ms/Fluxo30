@@ -5,4 +5,5 @@ AGENTS.md
 .cursor/
 
 # Node
+dist/
 node_modules/
