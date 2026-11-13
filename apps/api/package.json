@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && tsc --watch --preserveWatchOutput && nodemon"
+    "dev": "tsc && tsc --watch --preserveWatchOutput && nodemon",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -14,6 +15,7 @@
     "@types/pg": "^8.23.1",
     "eslint": "^10.14.0",
     "globals": "^17.14.0",
+    "jiti": "^2.7.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.10.1",
     "typescript": "^6.0.3",
