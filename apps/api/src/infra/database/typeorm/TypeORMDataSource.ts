@@ -19,6 +19,12 @@ export default abstract class TypeORMDataSource {
     await this.connection.initialize();
   }
 
+  public async disconnectFromDB(): Promise<void> {
+    if (!this.connection.isInitialized) return;
+
+    await this.connection.destroy();
+  }
+
   public getConnection(): DataSource {
     return this.connection;
   }
