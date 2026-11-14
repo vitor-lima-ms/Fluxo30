@@ -1,6 +1,5 @@
-import { type Request, type Response, Router } from 'express';
-
 import HealthCheckController from '#infra/http/controllers/HealthCheckController';
+import { type Request, type Response, Router } from 'express';
 
 const router = Router();
 

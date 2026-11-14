@@ -1,10 +1,10 @@
+import AppError from '#app/errors/AppError';
+import AppHttpError from '#app/errors/AppHttpError';
 import HTTP from 'http';
 import { isAxiosError } from 'axios';
 import { isCelebrateError } from 'celebrate';
 import type { NextFunction, Request, Response } from 'express';
 
-import AppError from '#app/errors/AppError';
-import AppHttpError from '#app/errors/AppHttpError';
 
 export default async function errorHandler(
   error: Error,
