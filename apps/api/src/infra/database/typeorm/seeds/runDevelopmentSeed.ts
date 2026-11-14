@@ -1,6 +1,4 @@
-import type { DataSource, QueryRunner } from 'typeorm';
 import { hash as hashPassword } from 'bcrypt';
-
 import {
   assertDevelopmentEnv,
   readSeedUserEnv,
@@ -8,14 +6,15 @@ import {
 } from '#infra/database/typeorm/seeds/assertDevelopmentEnv';
 import {
   buildLedgerRows,
+  type CategorySeed,
   DEVELOPMENT_SEED_NAME,
   EXPENSE_SEED_COUNT,
   GLOBAL_CATEGORY_SEEDS,
+  type ResolvedCategory,
   REVENUE_SEED_COUNT,
   USER_CATEGORY_SEEDS,
-  type CategorySeed,
-  type ResolvedCategory,
 } from '#infra/database/typeorm/seeds/developmentCatalog';
+import type { DataSource, QueryRunner } from 'typeorm';
 
 const LEDGER_INSERT_BATCH_SIZE = 100;
 

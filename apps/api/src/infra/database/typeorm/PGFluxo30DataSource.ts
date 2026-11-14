@@ -1,8 +1,7 @@
-import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { singleton } from 'tsyringe';
-
 import TypeORMDataSource from '#infra/database/typeorm/TypeORMDataSource';
+import { dirname, join } from 'node:path';
 
 const migrationsGlob = join(
   dirname(fileURLToPath(import.meta.url)),

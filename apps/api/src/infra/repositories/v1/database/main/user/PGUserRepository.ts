@@ -1,8 +1,7 @@
-import { DataSource } from 'typeorm';
-import { inject, injectable } from 'tsyringe';
-
 import AppError from '#app/errors/AppError';
 import AppHttpError from '#app/errors/AppHttpError';
+import { DataSource } from 'typeorm';
+import PGFluxo30DataSource from '#infra/database/typeorm/PGFluxo30DataSource';
 import type {
   IFetchUserByIdInput,
   IFetchUserByIdOutput,
@@ -10,7 +9,7 @@ import type {
   IFetchUserForLoginOutput,
   IPGUserRepository,
 } from '#app/repositories/v1/database/main/user/PGUserRepository';
-import PGFluxo30DataSource from '#infra/database/typeorm/PGFluxo30DataSource';
+import { inject, injectable } from 'tsyringe';
 
 @injectable()
 export default class PGUserRepository implements IPGUserRepository {

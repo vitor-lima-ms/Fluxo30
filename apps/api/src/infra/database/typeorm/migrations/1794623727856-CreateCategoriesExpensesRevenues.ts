@@ -1,4 +1,4 @@
-import { Table, type MigrationInterface, type QueryRunner } from 'typeorm';
+import { type MigrationInterface, type QueryRunner, Table } from 'typeorm';
 
 function createLedgerTable(name: 'expenses' | 'revenues'): Table {
   return new Table({

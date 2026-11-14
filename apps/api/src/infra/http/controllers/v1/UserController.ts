@@ -1,9 +1,8 @@
 import { container } from 'tsyringe';
-import type { Request, Response } from 'express';
-
 import { cookieOptions } from '#infra/http/utils/cookieOptions';
 import User_FetchByIdUC from '#app/useCases/v1/user/User_FetchByIdUC';
 import User_LoginUC from '#app/useCases/v1/user/User_LoginUC';
+import type { Request, Response } from 'express';
 
 export default class UserController {
   public async fetchById(req: Request, res: Response): Promise<Response> {

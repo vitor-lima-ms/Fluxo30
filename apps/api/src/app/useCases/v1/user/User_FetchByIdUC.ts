@@ -1,6 +1,5 @@
-import { inject, injectable } from 'tsyringe';
-
 import type { IPGUserRepository } from '#app/repositories/v1/database/main/user/PGUserRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IInput {
   id: string;

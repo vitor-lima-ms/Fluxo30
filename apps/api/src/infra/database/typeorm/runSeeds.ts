@@ -1,11 +1,9 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-
-import { container } from 'tsyringe';
-
-import { assertDevelopmentEnv } from '#infra/database/typeorm/seeds/assertDevelopmentEnv';
-import TypeORMDataSource from '#infra/database/typeorm/TypeORMDataSource';
 import '#shared/index';
+import { assertDevelopmentEnv } from '#infra/database/typeorm/seeds/assertDevelopmentEnv';
+import { container } from 'tsyringe';
+import TypeORMDataSource from '#infra/database/typeorm/TypeORMDataSource';
 
 async function main(): Promise<void> {
   assertDevelopmentEnv();

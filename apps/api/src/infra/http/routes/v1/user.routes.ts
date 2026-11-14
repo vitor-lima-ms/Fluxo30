@@ -1,7 +1,6 @@
-import { type Request, type Response, Router } from 'express';
-
 import middlewares from '#infra/http/middlewares/index';
 import UserController from '#infra/http/controllers/v1/UserController';
+import { type Request, type Response, Router } from 'express';
 
 const router = Router();
 
