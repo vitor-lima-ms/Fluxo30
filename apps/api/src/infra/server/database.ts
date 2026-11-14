@@ -43,6 +43,15 @@ export default async function setupDB(): Promise<void> {
       console.log(`[PG] Database migration failed (${token})`, error);
       throw error;
     }
+
+    if (process.env['NODE_ENV'] !== 'development') continue;
+
+    try {
+      await dataSource.runPendingSeeds();
+    } catch (error) {
+      console.log(`[PG] Database seed failed (${token})`, error);
+      throw error;
+    }
   }
 }
 

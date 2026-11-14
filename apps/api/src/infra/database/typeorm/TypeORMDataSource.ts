@@ -1,5 +1,10 @@
 import { DataSource, type DataSourceOptions } from 'typeorm';
 
+import {
+  resetAndRunDevelopmentSeed,
+  runPendingDevelopmentSeed,
+} from '#infra/database/typeorm/seeds/runDevelopmentSeed';
+
 export default abstract class TypeORMDataSource {
   protected connection: DataSource;
   protected readonly dataSourceOpts: DataSourceOptions;
@@ -30,6 +35,20 @@ export default abstract class TypeORMDataSource {
 
     const executed = await this.connection.runMigrations();
     console.log(`[PG] Database migrations applied: ${String(executed.length)}`);
+  }
+
+  public async runPendingSeeds(): Promise<void> {
+    if (!this.connection.isInitialized) return;
+
+    const executed = await runPendingDevelopmentSeed(this.connection);
+    console.log(`[PG] Database seeds applied: ${String(executed)}`);
+  }
+
+  public async resetAndSeed(): Promise<void> {
+    if (!this.connection.isInitialized) return;
+
+    await resetAndRunDevelopmentSeed(this.connection);
+    console.log('[PG] Database seeds reset and applied');
   }
 
   public getConnection(): DataSource {
