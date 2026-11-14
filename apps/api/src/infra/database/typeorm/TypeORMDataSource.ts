@@ -25,6 +25,13 @@ export default abstract class TypeORMDataSource {
     await this.connection.destroy();
   }
 
+  public async runPendingMigrations(): Promise<void> {
+    if (!this.connection.isInitialized) return;
+
+    const executed = await this.connection.runMigrations();
+    console.log(`[PG] Database migrations applied: ${String(executed.length)}`);
+  }
+
   public getConnection(): DataSource {
     return this.connection;
   }
