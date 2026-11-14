@@ -1,8 +1,7 @@
-import jwt from 'jsonwebtoken';
-import type { NextFunction, Request, Response } from 'express';
-
 import AppError from '#app/errors/AppError';
 import AppHttpError from '#app/errors/AppHttpError';
+import jwt from 'jsonwebtoken';
+import type { NextFunction, Request, Response } from 'express';
 
 export default function JwtMiddleware(
   req: Request,

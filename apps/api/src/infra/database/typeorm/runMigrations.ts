@@ -1,10 +1,8 @@
-import 'reflect-metadata';
 import 'dotenv/config';
-
-import { container } from 'tsyringe';
-
-import TypeORMDataSource from '#infra/database/typeorm/TypeORMDataSource';
+import 'reflect-metadata';
 import '#shared/index';
+import { container } from 'tsyringe';
+import TypeORMDataSource from '#infra/database/typeorm/TypeORMDataSource';
 
 async function main(): Promise<void> {
   const dataSource = container.resolve<TypeORMDataSource>(

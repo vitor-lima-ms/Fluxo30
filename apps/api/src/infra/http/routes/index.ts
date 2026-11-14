@@ -1,6 +1,5 @@
-import { Router } from 'express';
-
 import healthCheckRouter from '#infra/http/routes/healthCheck.routes';
+import { Router } from 'express';
 import v1Router from '#infra/http/routes/v1/index';
 
 const routers = Router();

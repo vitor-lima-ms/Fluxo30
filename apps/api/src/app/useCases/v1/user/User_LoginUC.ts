@@ -1,10 +1,9 @@
-import { compare } from 'bcrypt';
-import { inject, injectable } from 'tsyringe';
-import jwt from 'jsonwebtoken';
-
 import AppError from '#app/errors/AppError';
 import AppHttpError from '#app/errors/AppHttpError';
+import { compare } from 'bcrypt';
 import type { IPGUserRepository } from '#app/repositories/v1/database/main/user/PGUserRepository';
+import jwt from 'jsonwebtoken';
+import { inject, injectable } from 'tsyringe';
 
 interface IInput {
   email: string;

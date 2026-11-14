@@ -1,8 +1,7 @@
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import express from 'express';
-
 import errorHandler from '#infra/errors/errorHandler';
+import express from 'express';
 import middlewares from '#infra/http/middlewares/index';
 import routes from '#infra/http/routes/index';
 
