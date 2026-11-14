@@ -35,11 +35,13 @@ export default function JwtMiddleware(
         message: 'Token decodificado inválido',
       });
     }
+    const sub = decoded['sub'];
+    const email = decoded['email'];
     if (
-      !decoded['sub']
-      || !decoded['email']
-      || !decoded['schemaId']
-      || !decoded['schemaName']
+      typeof sub !== 'string'
+      || !sub.length
+      || typeof email !== 'string'
+      || !email.length
     ) {
       throw new AppError({
         errorCode: 'UNDEFINED_REQUIRED_PROPERTY',
@@ -48,12 +50,7 @@ export default function JwtMiddleware(
       });
     }
 
-    req.user = {
-      email: decoded['email'],
-      id: decoded['sub'],
-      schemaId: decoded['schemaId'],
-      schemaName: decoded['schemaName'],
-    };
+    req.user = { email, id: sub };
 
     next();
   } catch (error) {
