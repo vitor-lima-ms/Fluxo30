@@ -17,17 +17,31 @@ const databases: IDBArray[] = [
 ];
 
 export default async function setupDB(): Promise<void> {
+  const runMigrationsOnBoot = process.env['NODE_ENV'] !== 'production';
+
   for (const { enabled, label, token } of databases) {
     if (!enabled) continue;
 
+    const dataSource = container.resolve<TypeORMDataSource>(token);
+
     try {
-      await container.resolve<TypeORMDataSource>(token).connectToDB();
+      await dataSource.connectToDB();
       console.log(label);
     } catch (error) {
       console.log(
         `[PG] Database connection skipped or failed (${token})`,
         error,
       );
+      continue;
+    }
+
+    if (!runMigrationsOnBoot) continue;
+
+    try {
+      await dataSource.runPendingMigrations();
+    } catch (error) {
+      console.log(`[PG] Database migration failed (${token})`, error);
+      throw error;
     }
   }
 }
