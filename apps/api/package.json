@@ -11,6 +11,8 @@
     "start": "node dist/index.js",
     "migration:create": "typeorm migration:create",
     "migration:run": "tsc && node dist/infra/database/typeorm/runMigrations.js",
+    "seed": "tsc && node dist/infra/database/typeorm/runSeeds.js",
+    "seed:reset": "tsc && node dist/infra/database/typeorm/runSeedReset.js",
     "format": "prettier --config .prettierrc src",
     "format:check": "prettier --config .prettierrc --check src",
     "lint": "eslint --config eslint.config.mts src",
