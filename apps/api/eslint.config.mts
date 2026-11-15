@@ -5,21 +5,31 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   {
+    extends: [js.configs.recommended, tseslint.configs.recommended],
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
-    extends: [js.configs.recommended],
     languageOptions: { globals: globals.node },
     rules: {
       'sort-imports': [
         'error',
         {
+          allowSeparatedGroups: false,
           ignoreCase: true,
           ignoreDeclarationSort: false,
           ignoreMemberSort: false,
           memberSyntaxSortOrder: ['none', 'single', 'multiple', 'all'],
-          allowSeparatedGroups: false,
+        },
+      ],
+      'sort-keys': [
+        'error',
+        'asc',
+        {
+          allowLineSeparatedGroups: false,
+          caseSensitive: false,
+          ignoreComputedKeys: false,
+          minKeys: 2,
+          natural: true,
         },
       ],
     },
   },
-  tseslint.configs.recommended,
 ]);

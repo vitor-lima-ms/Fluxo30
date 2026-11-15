@@ -4,49 +4,49 @@ export class CreateUsers1794615729109 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
         columns: [
           {
+            default: 'uuidv7()',
+            isNullable: false,
+            isPrimary: true,
             name: 'id',
             type: 'uuid',
-            isPrimary: true,
-            isNullable: false,
-            default: 'uuidv7()',
           },
           {
+            isNullable: false,
+            length: '100',
             name: 'first_name',
             type: 'varchar',
-            length: '100',
-            isNullable: false,
           },
           {
+            isNullable: false,
+            length: '100',
             name: 'last_name',
             type: 'varchar',
-            length: '100',
-            isNullable: false,
           },
-          { name: 'email', type: 'varchar', length: '255', isNullable: false },
+          { isNullable: false, length: '255', name: 'email', type: 'varchar' },
           {
+            isNullable: false,
+            length: '255',
             name: 'password_hash',
             type: 'varchar',
-            length: '255',
-            isNullable: false,
           },
-          { name: 'email_verified_at', type: 'timestamptz', isNullable: true },
+          { isNullable: true, name: 'email_verified_at', type: 'timestamptz' },
           {
+            default: 'now()',
+            isNullable: false,
             name: 'created_at',
             type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
           },
           {
+            default: 'now()',
+            isNullable: false,
             name: 'updated_at',
             type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
           },
-          { name: 'deleted_at', type: 'timestamptz', isNullable: true },
+          { isNullable: true, name: 'deleted_at', type: 'timestamptz' },
         ],
+        name: 'users',
       }),
     );
 

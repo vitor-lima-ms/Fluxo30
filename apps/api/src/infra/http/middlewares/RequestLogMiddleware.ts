@@ -33,7 +33,6 @@ export default function RequestLogMiddleware(
   if (process.env['APP_LOG_REQUESTS'] !== 'true') return next();
 
   const output: RequestLog = {
-    startTime: '',
     body: undefined,
     endpoint: undefined,
     endTime: undefined,
@@ -42,6 +41,7 @@ export default function RequestLogMiddleware(
     method: undefined,
     params: undefined,
     query: undefined,
+    startTime: '',
     statusCode: undefined,
   };
 

@@ -11,7 +11,7 @@ export default async function setupApp(): Promise<void> {
 
   app.use(cors({ credentials: true, origin: process.env['FRONTEND_ORIGIN'] }));
   app.use(express.json({ limit: `${fileSize}mb` }));
-  app.use(express.urlencoded({ limit: `${fileSize}mb`, extended: true }));
+  app.use(express.urlencoded({ extended: true, limit: `${fileSize}mb` }));
   app.use(cookieParser());
   app.use(middlewares.RequestLogMiddleware);
   app.use(routes);
