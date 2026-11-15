@@ -34,67 +34,67 @@ interface CategoryAmountMeta {
 }
 
 export const GLOBAL_CATEGORY_SEEDS: CategorySeed[] = [
-  { kind: 'expense', name: 'Alimentação', color: '#E85D4C', icon: 'utensils' },
-  { kind: 'expense', name: 'Transporte', color: '#4C8FE8', icon: 'car' },
-  { kind: 'expense', name: 'Moradia', color: '#C4A35A', icon: 'house' },
-  { kind: 'expense', name: 'Lazer', color: '#9B59B6', icon: 'sparkles' },
-  { kind: 'expense', name: 'Saúde', color: '#2ECC71', icon: 'heart' },
-  { kind: 'revenue', name: 'Salário', color: '#27AE60', icon: 'wallet' },
-  { kind: 'revenue', name: 'Freelance', color: '#16A085', icon: 'briefcase' },
-  { kind: 'revenue', name: 'Investimentos', color: '#F39C12', icon: 'chart' },
+  { color: '#E85D4C', icon: 'utensils', kind: 'expense', name: 'Alimentação' },
+  { color: '#4C8FE8', icon: 'car', kind: 'expense', name: 'Transporte' },
+  { color: '#C4A35A', icon: 'house', kind: 'expense', name: 'Moradia' },
+  { color: '#9B59B6', icon: 'sparkles', kind: 'expense', name: 'Lazer' },
+  { color: '#2ECC71', icon: 'heart', kind: 'expense', name: 'Saúde' },
+  { color: '#27AE60', icon: 'wallet', kind: 'revenue', name: 'Salário' },
+  { color: '#16A085', icon: 'briefcase', kind: 'revenue', name: 'Freelance' },
+  { color: '#F39C12', icon: 'chart', kind: 'revenue', name: 'Investimentos' },
 ];
 
 export const USER_CATEGORY_SEEDS: CategorySeed[] = [
-  { kind: 'expense', name: 'Assinaturas', color: '#6C5CE7', icon: 'repeat' },
-  { kind: 'revenue', name: 'Reembolso', color: '#00B894', icon: 'rotate-ccw' },
+  { color: '#6C5CE7', icon: 'repeat', kind: 'expense', name: 'Assinaturas' },
+  { color: '#00B894', icon: 'rotate-ccw', kind: 'revenue', name: 'Reembolso' },
 ];
 
 const CATEGORY_AMOUNT_META: Record<string, CategoryAmountMeta> = {
   Alimentação: {
-    min: 15,
-    max: 85,
     descriptions: ['Almoço', 'Jantar', 'Mercado', 'Café'],
-  },
-  Transporte: {
-    min: 5,
-    max: 55,
-    descriptions: ['Uber', 'Combustível', 'Metrô', 'Estacionamento'],
-  },
-  Moradia: {
-    min: 80,
-    max: 2200,
-    descriptions: ['Aluguel', 'Conta de luz', 'Condomínio', 'Internet'],
-  },
-  Lazer: {
-    min: 20,
-    max: 220,
-    descriptions: ['Cinema', 'Show', 'Passeio', 'Viagem'],
-  },
-  Saúde: {
-    min: 30,
-    max: 420,
-    descriptions: ['Farmácia', 'Consulta', 'Exame', 'Academia'],
+    max: 85,
+    min: 15,
   },
   Assinaturas: {
-    min: 9.9,
-    max: 59.9,
     descriptions: ['Streaming', 'Música', 'Nuvem', 'Software'],
+    max: 59.9,
+    min: 9.9,
   },
-  Salário: { min: 3500, max: 8200, descriptions: ['Salário mensal'] },
   Freelance: {
-    min: 500,
-    max: 4200,
     descriptions: ['Projeto', 'Consultoria', 'Hora técnica'],
+    max: 4200,
+    min: 500,
   },
   Investimentos: {
-    min: 50,
-    max: 1600,
     descriptions: ['Dividendos', 'Rendimento', 'Juros'],
+    max: 1600,
+    min: 50,
+  },
+  Lazer: {
+    descriptions: ['Cinema', 'Show', 'Passeio', 'Viagem'],
+    max: 220,
+    min: 20,
+  },
+  Moradia: {
+    descriptions: ['Aluguel', 'Conta de luz', 'Condomínio', 'Internet'],
+    max: 2200,
+    min: 80,
   },
   Reembolso: {
-    min: 20,
-    max: 480,
     descriptions: ['Reembolso', 'Estorno', 'Restituição'],
+    max: 480,
+    min: 20,
+  },
+  Salário: { descriptions: ['Salário mensal'], max: 8200, min: 3500 },
+  Saúde: {
+    descriptions: ['Farmácia', 'Consulta', 'Exame', 'Academia'],
+    max: 420,
+    min: 30,
+  },
+  Transporte: {
+    descriptions: ['Uber', 'Combustível', 'Metrô', 'Estacionamento'],
+    max: 55,
+    min: 5,
   },
 };
 
@@ -159,11 +159,11 @@ export function buildLedgerRows(
     const isGlobal = category.scope === 'global';
 
     return {
-      globalScopedCategoryId: isGlobal ? category.id : null,
-      userScopedCategoryId: isGlobal ? null : category.id,
       amount: interpolateAmount(meta.min, meta.max, index),
-      occurredOn,
       description: `${description} #${String(index + 1)}`,
+      globalScopedCategoryId: isGlobal ? category.id : null,
+      occurredOn,
+      userScopedCategoryId: isGlobal ? null : category.id,
     };
   });
 }

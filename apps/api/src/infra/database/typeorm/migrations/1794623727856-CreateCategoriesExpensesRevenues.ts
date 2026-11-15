@@ -2,86 +2,86 @@ import { type MigrationInterface, type QueryRunner, Table } from 'typeorm';
 
 function createLedgerTable(name: 'expenses' | 'revenues'): Table {
   return new Table({
-    name,
-    columns: [
-      {
-        name: 'id',
-        type: 'uuid',
-        isPrimary: true,
-        isNullable: false,
-        default: 'uuidv7()',
-      },
-      { name: 'user_id', type: 'uuid', isNullable: false },
-      { name: 'global_scoped_category_id', type: 'uuid', isNullable: true },
-      { name: 'user_scoped_category_id', type: 'uuid', isNullable: true },
-      {
-        name: 'amount',
-        type: 'numeric',
-        precision: 14,
-        scale: 2,
-        isNullable: false,
-      },
-      { name: 'occurred_on', type: 'date', isNullable: false },
-      { name: 'description', type: 'varchar', length: '255', isNullable: true },
-      {
-        name: 'created_at',
-        type: 'timestamptz',
-        isNullable: false,
-        default: 'now()',
-      },
-      {
-        name: 'updated_at',
-        type: 'timestamptz',
-        isNullable: false,
-        default: 'now()',
-      },
-      { name: 'deleted_at', type: 'timestamptz', isNullable: true },
-    ],
     checks: [
-      { name: `${name}_amount_positive_check`, expression: '"amount" > 0' },
+      { expression: '"amount" > 0', name: `${name}_amount_positive_check` },
       {
-        name: `${name}_category_xor_check`,
         expression:
           'num_nonnulls("global_scoped_category_id", "user_scoped_category_id") = 1',
+        name: `${name}_category_xor_check`,
       },
+    ],
+    columns: [
+      {
+        default: 'uuidv7()',
+        isNullable: false,
+        isPrimary: true,
+        name: 'id',
+        type: 'uuid',
+      },
+      { isNullable: false, name: 'user_id', type: 'uuid' },
+      { isNullable: true, name: 'global_scoped_category_id', type: 'uuid' },
+      { isNullable: true, name: 'user_scoped_category_id', type: 'uuid' },
+      {
+        isNullable: false,
+        name: 'amount',
+        precision: 14,
+        scale: 2,
+        type: 'numeric',
+      },
+      { isNullable: false, name: 'occurred_on', type: 'date' },
+      { isNullable: true, length: '255', name: 'description', type: 'varchar' },
+      {
+        default: 'now()',
+        isNullable: false,
+        name: 'created_at',
+        type: 'timestamptz',
+      },
+      {
+        default: 'now()',
+        isNullable: false,
+        name: 'updated_at',
+        type: 'timestamptz',
+      },
+      { isNullable: true, name: 'deleted_at', type: 'timestamptz' },
     ],
     foreignKeys: [
       {
-        name: `${name}_user_id_fk`,
         columnNames: ['user_id'],
+        name: `${name}_user_id_fk`,
+        onDelete: 'RESTRICT',
+        referencedColumnNames: ['id'],
         referencedTableName: 'users',
-        referencedColumnNames: ['id'],
-        onDelete: 'RESTRICT',
       },
       {
-        name: `${name}_global_scoped_category_id_fk`,
         columnNames: ['global_scoped_category_id'],
-        referencedTableName: 'global_scoped_categories',
-        referencedColumnNames: ['id'],
+        name: `${name}_global_scoped_category_id_fk`,
         onDelete: 'RESTRICT',
+        referencedColumnNames: ['id'],
+        referencedTableName: 'global_scoped_categories',
       },
       {
-        name: `${name}_user_user_scoped_category_fk`,
         columnNames: ['user_id', 'user_scoped_category_id'],
-        referencedTableName: 'user_scoped_categories',
-        referencedColumnNames: ['user_id', 'id'],
+        name: `${name}_user_user_scoped_category_fk`,
         onDelete: 'RESTRICT',
+        referencedColumnNames: ['user_id', 'id'],
+        referencedTableName: 'user_scoped_categories',
       },
     ],
     indices: [
       {
-        name: `${name}_user_id_occurred_on_idx`,
         columnNames: ['user_id', 'occurred_on'],
+        name: `${name}_user_id_occurred_on_idx`,
       },
       {
-        name: `${name}_global_scoped_category_id_idx`,
         columnNames: ['global_scoped_category_id'],
+        name: `${name}_global_scoped_category_id_idx`,
       },
       {
-        name: `${name}_user_scoped_category_id_idx`,
         columnNames: ['user_scoped_category_id'],
+        name: `${name}_user_scoped_category_id_idx`,
       },
     ],
+    name,
   });
 }
 
@@ -89,43 +89,43 @@ export class CreateCategoriesExpensesRevenues1794623727856 implements MigrationI
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'global_scoped_categories',
-        columns: [
-          {
-            name: 'id',
-            type: 'uuid',
-            isPrimary: true,
-            isNullable: false,
-            default: 'uuidv7()',
-          },
-          { name: 'kind', type: 'varchar', length: '20', isNullable: false },
-          { name: 'name', type: 'varchar', length: '100', isNullable: false },
-          { name: 'color', type: 'varchar', length: '7', isNullable: false },
-          { name: 'icon', type: 'varchar', length: '50', isNullable: false },
-          {
-            name: 'created_at',
-            type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
-          },
-          {
-            name: 'updated_at',
-            type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
-          },
-          { name: 'deleted_at', type: 'timestamptz', isNullable: true },
-        ],
         checks: [
           {
-            name: 'global_scoped_categories_kind_check',
             expression: `"kind" IN ('expense', 'revenue')`,
+            name: 'global_scoped_categories_kind_check',
           },
           {
-            name: 'global_scoped_categories_color_check',
             expression: `"color" ~ '^#[0-9A-Fa-f]{6}$'`,
+            name: 'global_scoped_categories_color_check',
           },
         ],
+        columns: [
+          {
+            default: 'uuidv7()',
+            isNullable: false,
+            isPrimary: true,
+            name: 'id',
+            type: 'uuid',
+          },
+          { isNullable: false, length: '20', name: 'kind', type: 'varchar' },
+          { isNullable: false, length: '100', name: 'name', type: 'varchar' },
+          { isNullable: false, length: '7', name: 'color', type: 'varchar' },
+          { isNullable: false, length: '50', name: 'icon', type: 'varchar' },
+          {
+            default: 'now()',
+            isNullable: false,
+            name: 'created_at',
+            type: 'timestamptz',
+          },
+          {
+            default: 'now()',
+            isNullable: false,
+            name: 'updated_at',
+            type: 'timestamptz',
+          },
+          { isNullable: true, name: 'deleted_at', type: 'timestamptz' },
+        ],
+        name: 'global_scoped_categories',
       }),
     );
 
@@ -135,63 +135,63 @@ export class CreateCategoriesExpensesRevenues1794623727856 implements MigrationI
 
     await queryRunner.createTable(
       new Table({
-        name: 'user_scoped_categories',
-        columns: [
-          {
-            name: 'id',
-            type: 'uuid',
-            isPrimary: true,
-            isNullable: false,
-            default: 'uuidv7()',
-          },
-          { name: 'user_id', type: 'uuid', isNullable: false },
-          { name: 'kind', type: 'varchar', length: '20', isNullable: false },
-          { name: 'name', type: 'varchar', length: '100', isNullable: false },
-          { name: 'color', type: 'varchar', length: '7', isNullable: false },
-          { name: 'icon', type: 'varchar', length: '50', isNullable: false },
-          {
-            name: 'created_at',
-            type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
-          },
-          {
-            name: 'updated_at',
-            type: 'timestamptz',
-            isNullable: false,
-            default: 'now()',
-          },
-          { name: 'deleted_at', type: 'timestamptz', isNullable: true },
-        ],
         checks: [
           {
-            name: 'user_scoped_categories_kind_check',
             expression: `"kind" IN ('expense', 'revenue')`,
+            name: 'user_scoped_categories_kind_check',
           },
           {
-            name: 'user_scoped_categories_color_check',
             expression: `"color" ~ '^#[0-9A-Fa-f]{6}$'`,
+            name: 'user_scoped_categories_color_check',
           },
         ],
-        uniques: [
+        columns: [
           {
-            name: 'user_scoped_categories_id_user_id_unique',
-            columnNames: ['id', 'user_id'],
+            default: 'uuidv7()',
+            isNullable: false,
+            isPrimary: true,
+            name: 'id',
+            type: 'uuid',
+          },
+          { isNullable: false, name: 'user_id', type: 'uuid' },
+          { isNullable: false, length: '20', name: 'kind', type: 'varchar' },
+          { isNullable: false, length: '100', name: 'name', type: 'varchar' },
+          { isNullable: false, length: '7', name: 'color', type: 'varchar' },
+          { isNullable: false, length: '50', name: 'icon', type: 'varchar' },
+          {
+            default: 'now()',
+            isNullable: false,
+            name: 'created_at',
+            type: 'timestamptz',
+          },
+          {
+            default: 'now()',
+            isNullable: false,
+            name: 'updated_at',
+            type: 'timestamptz',
+          },
+          { isNullable: true, name: 'deleted_at', type: 'timestamptz' },
+        ],
+        foreignKeys: [
+          {
+            columnNames: ['user_id'],
+            name: 'user_scoped_categories_user_id_fk',
+            onDelete: 'RESTRICT',
+            referencedColumnNames: ['id'],
+            referencedTableName: 'users',
           },
         ],
         indices: [
           {
-            name: 'user_scoped_categories_user_id_idx',
             columnNames: ['user_id'],
+            name: 'user_scoped_categories_user_id_idx',
           },
         ],
-        foreignKeys: [
+        name: 'user_scoped_categories',
+        uniques: [
           {
-            name: 'user_scoped_categories_user_id_fk',
-            columnNames: ['user_id'],
-            referencedTableName: 'users',
-            referencedColumnNames: ['id'],
-            onDelete: 'RESTRICT',
+            columnNames: ['id', 'user_id'],
+            name: 'user_scoped_categories_id_user_id_unique',
           },
         ],
       }),

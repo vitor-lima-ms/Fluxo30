@@ -19,10 +19,10 @@ export default function JwtMiddleware(
   if (typeof token !== 'string' || !token.length) {
     throw new AppHttpError({
       errorCode: 'AUTH_COOKIE_NOT_SENT',
-      message: 'Cookie de autenticação não enviado',
-      statusCode: 401,
       errors: undefined,
       internalMessage: undefined,
+      message: 'Cookie de autenticação não enviado',
+      statusCode: 401,
     });
   }
 
@@ -61,17 +61,17 @@ export default function JwtMiddleware(
     ) {
       throw new AppHttpError({
         errorCode: 'INVALID_AUTH_TOKEN',
-        message: 'Token de autenticação inválido',
-        statusCode: 401,
         errors: undefined,
         internalMessage: undefined,
+        message: 'Token de autenticação inválido',
+        statusCode: 401,
       });
     }
 
     throw new AppError({
       errorCode: 'JWT_MIDDLEWARE_ERROR',
-      message: 'Erro no JwtMiddleware',
       internalMessage: error,
+      message: 'Erro no JwtMiddleware',
     });
   }
 }

@@ -20,9 +20,9 @@ export default async function errorHandler(
 
     error.details.entries().forEach(([segment, joiError]) => {
       validation[segment] = {
-        source: segment,
         keys: joiError.details.map((detail) => detail.path.join()),
         message: joiError.message,
+        source: segment,
       };
     });
 

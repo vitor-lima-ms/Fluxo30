@@ -45,10 +45,10 @@ export default class User_LoginUC {
     if (!isPasswordValid) {
       throw new AppHttpError({
         errorCode: 'INVALID_CREDENTIALS',
-        message: 'Credenciais inválidas',
-        statusCode: 401,
         errors: undefined,
         internalMessage: undefined,
+        message: 'Credenciais inválidas',
+        statusCode: 401,
       });
     }
 
