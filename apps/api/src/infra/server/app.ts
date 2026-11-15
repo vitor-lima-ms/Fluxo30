@@ -9,6 +9,7 @@ export default async function setupApp(): Promise<void> {
   const app = express();
   const fileSize = 30;
 
+  app.set('trust proxy', 1);
   app.use(cors({ credentials: true, origin: process.env['FRONTEND_ORIGIN'] }));
   app.use(express.json({ limit: `${fileSize}mb` }));
   app.use(express.urlencoded({ extended: true, limit: `${fileSize}mb` }));

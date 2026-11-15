@@ -10,6 +10,7 @@ router.get('', middlewares.JwtMiddleware, (req: Request, res: Response) =>
 router.post(
   '/login',
   middlewares.User_LoginRequest,
+  middlewares.User_LoginRateLimitMiddleware,
   (req: Request, res: Response) => new UserController().login(req, res),
 );
 router.post(
