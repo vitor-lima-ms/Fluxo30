@@ -36,10 +36,10 @@ export default class PGUserRepository implements IPGUserRepository {
       if (!existingUser) {
         throw new AppHttpError({
           errorCode: 'USER_NOT_FOUND',
-          message: 'Usuário não encontrado',
-          statusCode: 404,
           errors: undefined,
           internalMessage: undefined,
+          message: 'Usuário não encontrado',
+          statusCode: 404,
         });
       }
 
@@ -50,8 +50,8 @@ export default class PGUserRepository implements IPGUserRepository {
 
       throw new AppError({
         errorCode: 'ERROR_ON_FETCH_BY_ID',
-        message: 'Erro ao buscar o usuário por id',
         internalMessage: error,
+        message: 'Erro ao buscar o usuário por id',
       });
     }
   }
@@ -75,8 +75,8 @@ export default class PGUserRepository implements IPGUserRepository {
 
       throw new AppError({
         errorCode: 'ERROR_ON_FETCH_FOR_LOGIN',
-        message: 'Erro ao buscar o usuário para o login',
         internalMessage: error,
+        message: 'Erro ao buscar o usuário para o login',
       });
     }
   }
