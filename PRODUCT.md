@@ -57,7 +57,7 @@ Terminology to keep: **gasto** (expense), **receita** (revenue), **categoria**, 
 ## Evidence on Hand
 
 - Synthetic development seeds only (`apps/api` development catalog: categories such as Alimentação, Transporte, Moradia, Salário, and generated ledger rows). Treat as demo data, never as real customers.
-- No logo beyond `apps/web/public/favicon.ico`. No testimonials, press, case studies, or production screenshots.
+- Brand logo and icon assets created via Canva in `apps/web/public/` (`logo-fluxo30.png`, `logo-fluxo30-icon.png`, `favicon.ico`, `favicon-48x48.png`, `apple-touch-icon.png`). No testimonials, press, case studies, or production screenshots.
 - Future work must not fabricate customers, quotes, benchmarks, or Ambtec-derived identity.
 
 ## Product Principles
