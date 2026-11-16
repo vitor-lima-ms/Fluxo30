@@ -1,0 +1,72 @@
+:root {
+  --fluxo30-body-size: 1rem;
+  --fluxo30-body-weight: 400;
+  --fluxo30-display-size: 2rem;
+  --fluxo30-display-weight: 700;
+  --fluxo30-font: 'Roboto', system-ui, sans-serif;
+  --fluxo30-label-size: 0.75rem;
+  --fluxo30-label-weight: 500;
+  --fluxo30-radius: 4px;
+  --fluxo30-title-size: 1.25rem;
+  --fluxo30-title-weight: 500;
+}
+
+html,
+.v-application {
+  color: rgb(var(--v-theme-on-surface));
+  font-family: var(--fluxo30-font);
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgb(var(--v-theme-primary));
+  color: rgb(var(--v-theme-on-primary));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-primary));
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-color: rgb(var(--v-theme-on-surface)) rgb(var(--v-theme-surface));
+  scrollbar-width: thin;
+}
+
+.fluxo30-body {
+  font-size: var(--fluxo30-body-size);
+  font-weight: var(--fluxo30-body-weight);
+  letter-spacing: 0;
+  line-height: 1.5;
+  max-width: 75ch;
+}
+
+.fluxo30-display {
+  font-size: var(--fluxo30-display-size);
+  font-weight: var(--fluxo30-display-weight);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.fluxo30-figures {
+  font-feature-settings: 'tnum' 1;
+  font-size: var(--fluxo30-title-size);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--fluxo30-title-weight);
+  line-height: 1.3;
+}
+
+.fluxo30-label {
+  font-size: var(--fluxo30-label-size);
+  font-weight: var(--fluxo30-label-weight);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.fluxo30-title {
+  font-size: var(--fluxo30-title-size);
+  font-weight: var(--fluxo30-title-weight);
+  letter-spacing: 0;
+  line-height: 1.3;
+}
