@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T04:28:11.000Z",
+  "title": "Design System: Fluxo30",
+  "extensions": {
+    "colorMeta": {
+      "carimbo": {
+        "role": "primary",
+        "displayName": "Carimbo do dia",
+        "canonical": "oklch(55.3% 0.175 30.2)",
+        "tonalRamp": ["#440000", "#660000", "#880000", "#aa2013", "#cd4534", "#ff735f", "#ffa38f", "#ffc4af"]
+      },
+      "gasto": {
+        "role": "secondary",
+        "displayName": "Tinta de gasto",
+        "canonical": "oklch(57.9% 0.129 41.3)",
+        "tonalRamp": ["#380000", "#570000", "#772000", "#973e18", "#b85c38", "#e88762", "#ffb292", "#ffd3b2"]
+      },
+      "receita": {
+        "role": "tertiary",
+        "displayName": "Tinta de receita",
+        "canonical": "oklch(43.0% 0.117 261.8)",
+        "tonalRamp": ["#000443", "#032261", "#1d3f7f", "#375b9f", "#5379bf", "#7ca4ee", "#a7cbff", "#c7ecff"]
+      },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Papel de calendário",
+        "canonical": "oklch(95.4% 0.013 82.4)",
+        "tonalRamp": ["#14110b", "#2c2822", "#46423b", "#615d55", "#7e7a72", "#a9a49c", "#cecac3", "#efebe3"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(21.6% 0.007 67.4)",
+        "tonalRamp": ["#14110e", "#2b2825", "#45423e", "#615d59", "#7d7976", "#a8a4a0", "#cdcac6", "#eeeae7"]
+      },
+      "filete": {
+        "role": "neutral",
+        "displayName": "Filete da grade",
+        "canonical": "oklch(86.2% 0.019 75.3)",
+        "tonalRamp": ["#171008", "#2e281e", "#484137", "#645c52", "#81796e", "#aca398", "#d1c9bf", "#f2eadf"]
+      },
+      "papel-baixo": {
+        "role": "neutral",
+        "displayName": "Papel baixo",
+        "canonical": "oklch(92.1% 0.018 81.3)",
+        "tonalRamp": ["#161109", "#2d281f", "#474238", "#635d53", "#80796f", "#aaa498", "#d0cac0", "#f0eae0"]
+      },
+      "papel-alto": {
+        "role": "neutral",
+        "displayName": "Papel alto",
+        "canonical": "oklch(96.5% 0.01 81.8)",
+        "tonalRamp": ["#14110c", "#2b2823", "#45423c", "#605d57", "#7d7a74", "#a8a49e", "#cdcac4", "#eeebe5"]
+      },
+      "sala": {
+        "role": "neutral",
+        "displayName": "Sala",
+        "canonical": "oklch(20.3% 0.01 67.2)",
+        "tonalRamp": ["#15110d", "#2c2824", "#46413d", "#625d58", "#7e7974", "#a9a39e", "#cecac5", "#efeae5"]
+      },
+      "surface-escuro": {
+        "role": "neutral",
+        "displayName": "Surface escuro",
+        "canonical": "oklch(24.6% 0.011 73.4)",
+        "tonalRamp": ["#15110c", "#2c2823", "#46423c", "#615d57", "#7e7973", "#a9a49d", "#cecac4", "#efeae4"]
+      },
+      "filete-escuro": {
+        "role": "neutral",
+        "displayName": "Filete escuro",
+        "canonical": "oklch(33.8% 0.017 70.9)",
+        "tonalRamp": ["#161009", "#2e2820", "#484139", "#645c54", "#817970", "#aca399", "#d1c9c1", "#f1eae1"]
+      },
+      "erro": {
+        "role": "neutral",
+        "displayName": "Erro",
+        "canonical": "oklch(44.6% 0.132 29.7)",
+        "tonalRamp": ["#3a0000", "#590000", "#791911", "#9a392e", "#bc584a", "#ec8273", "#ffae9f", "#ffcfbf"]
+      },
+      "sucesso": {
+        "role": "neutral",
+        "displayName": "Sucesso",
+        "canonical": "oklch(43.6% 0.058 144.5)",
+        "tonalRamp": ["#001801", "#153015", "#2e4b2e", "#496649", "#658465", "#8faf8e", "#b8d4b7", "#d8f5d7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Só o mês/hoje, nunca um hero de marketing." },
+      "title": { "displayName": "Title", "purpose": "Cabeçalhos de seção na página de tokens e, depois, no app." },
+      "body": { "displayName": "Body", "purpose": "pt-BR corrido, até 75ch quando for prosa." },
+      "label": { "displayName": "Label", "purpose": "Campos, eixos, metadados; sem display face em UI chrome." },
+      "figures": { "displayName": "Figuras", "purpose": "Valores monetários tabulares na mesma escala das comparações." }
+    },
+    "shadows": [
+      {
+        "name": "rest",
+        "value": "none",
+        "purpose": "Surfaces stay flat at rest; depth comes from filete and a tonal step, never card shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #c43c2c; outline-offset: 2px",
+        "purpose": "Focus-visible on controls; carimbo ring, no lift."
+      }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação isolada em carimbo; flat, raio de célula, sem uppercase.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Guardar</button>",
+      "css": ".ds-btn-primary { background: #c43c2c; color: #f4efe6; border: none; border-radius: 4px; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; font-size: 0.75rem; font-weight: 500; height: 2.25rem; letter-spacing: 0.02em; padding: 0 1rem; text-transform: none; } .ds-btn-primary:hover { filter: brightness(1.05); } .ds-btn-primary:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined em ink e filete; mesmo retângulo do primário.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Cancelar</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #1c1916; border: 1px solid #d9d0c4; border-radius: 4px; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; font-size: 0.75rem; font-weight: 500; height: 2.25rem; letter-spacing: 0.02em; padding: 0 1rem; text-transform: none; } .ds-btn-secondary:hover { background: #ebe4d8; } .ds-btn-secondary:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Destructive Button",
+      "kind": "button",
+      "refersTo": "button-destructive",
+      "description": "Exclusão em tinta de erro, afastada do grupo principal.",
+      "html": "<button class=\"ds-btn-destructive\" type=\"button\">Excluir</button>",
+      "css": ".ds-btn-destructive { background: #8f2f24; color: #f4efe6; border: none; border-radius: 4px; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; font-size: 0.75rem; font-weight: 500; height: 2.25rem; letter-spacing: 0.02em; padding: 0 1rem; text-transform: none; } .ds-btn-destructive:hover { filter: brightness(1.05); } .ds-btn-destructive:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outlined Field",
+      "kind": "input",
+      "refersTo": "field-outlined",
+      "description": "Campo outlined de célula; foco com anel de carimbo.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Descrição</span><input class=\"ds-field-input\" value=\"Almoço · sintético\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.35rem; font-family: Roboto, system-ui, sans-serif; max-width: 24rem; } .ds-field-label { color: #1c1916; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; } .ds-field-input { background: transparent; border: 1px solid #d9d0c4; border-radius: 4px; color: #1c1916; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; font-size: 1rem; height: 3.5rem; padding: 0 1rem; } .ds-field-input:hover { border-color: #1c1916; } .ds-field-input:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Month App Bar",
+      "kind": "nav",
+      "refersTo": "app-bar",
+      "description": "Cabeçalho de mês pintado: Fluxo30, mês corrente, toggle claro/escuro.",
+      "html": "<header class=\"ds-app-bar\"><span class=\"ds-app-title\">Fluxo30</span><span class=\"ds-app-month\">Novembro de 2026</span><button class=\"ds-app-toggle\" type=\"button\" aria-label=\"Ativar tema escuro\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 3c.132 0 .263.004.394.012C9.69 4.18 8 6.89 8 10c0 4.418 3.582 8 8 8 1.232 0 2.395-.28 3.437-.78C18.23 19.96 15.3 22 12 22 6.477 22 2 17.523 2 12S6.477 2 12 3z\"/></svg></button></header>",
+      "css": ".ds-app-bar { align-items: center; background: #c43c2c; color: #f4efe6; display: flex; font-family: Roboto, system-ui, sans-serif; gap: 0.75rem; height: 64px; padding: 0 1rem; } .ds-app-title { flex: 1; font-size: 1.25rem; font-weight: 500; } .ds-app-month { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; text-transform: none; } .ds-app-toggle { background: transparent; border: none; color: #f4efe6; cursor: pointer; height: 2.25rem; width: 2.25rem; } .ds-app-toggle:focus-visible { outline: 2px solid #f4efe6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Book Gasto",
+      "kind": "custom",
+      "refersTo": "book-gasto-decoded",
+      "description": "Território de gasto na faixa Hoje; só o selecionado em cor cheia.",
+      "html": "<button class=\"ds-book ds-book-gasto\" type=\"button\"><span class=\"ds-book-label\">Gasto</span><span class=\"ds-book-figure\">R$ 47,90</span><span class=\"ds-book-meta\">Alimentação · sintético</span></button>",
+      "css": ".ds-book { align-items: flex-start; border: 1px solid #d9d0c4; border-radius: 4px; cursor: pointer; display: flex; flex-direction: column; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; gap: 0.35rem; min-height: 8rem; padding: 1.25rem 1.5rem; text-align: start; } .ds-book-gasto { background: #b85c38; border-color: #b85c38; color: #f4efe6; } .ds-book-label, .ds-book-meta { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; } .ds-book-figure { font-size: 1.25rem; font-weight: 500; } .ds-book:hover { filter: brightness(1.03); } .ds-book:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Book Receita",
+      "kind": "custom",
+      "refersTo": "book-receita",
+      "description": "Território de receita em repouso: papel e filete, nunca a tinta de gasto.",
+      "html": "<button class=\"ds-book ds-book-receita\" type=\"button\"><span class=\"ds-book-label\">Receita</span><span class=\"ds-book-figure\">R$ 1.200,00</span><span class=\"ds-book-meta\">Salário · sintético</span></button>",
+      "css": ".ds-book { align-items: flex-start; background: #f4efe6; border: 1px solid #d9d0c4; border-radius: 4px; color: #1c1916; cursor: pointer; display: flex; flex-direction: column; font-family: Roboto, system-ui, sans-serif; font-feature-settings: \"tnum\" 1; gap: 0.35rem; min-height: 8rem; padding: 1.25rem 1.5rem; text-align: start; } .ds-book-label, .ds-book-meta { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; } .ds-book-figure { font-size: 1.25rem; font-weight: 500; } .ds-book:hover { background: #ebe4d8; } .ds-book:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Empty Month Cell",
+      "kind": "custom",
+      "refersTo": "empty-cell",
+      "description": "Resto do mês: filete vazio, número em label, sem carimbo.",
+      "html": "<div class=\"ds-empty-grid\"><div class=\"ds-empty-cell\">1</div><div class=\"ds-empty-cell\">2</div><div class=\"ds-empty-cell\">3</div><div class=\"ds-empty-cell\">4</div><div class=\"ds-empty-cell\">5</div><div class=\"ds-empty-cell\">6</div><div class=\"ds-empty-cell\">7</div></div>",
+      "css": ".ds-empty-grid { display: grid; gap: 0.5rem; grid-template-columns: repeat(7, minmax(0, 1fr)); } .ds-empty-cell { aspect-ratio: 1; border: 1px solid #d9d0c4; border-radius: 4px; color: #1c1916; font-family: Roboto, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; padding: 0.4rem; }"
+    },
+    {
+      "name": "Today Band",
+      "kind": "custom",
+      "refersTo": "book-gasto",
+      "description": "Faixa Hoje de largura total: dois livros no mesmo quadrado, um decodificado.",
+      "html": "<section class=\"ds-hoje\"><h2 class=\"ds-hoje-title\">Dia 16</h2><div class=\"ds-hoje-split\"><button class=\"ds-hoje-gasto\" type=\"button\"><span>Gasto</span><strong>R$ 47,90</strong><span>Alimentação · sintético</span></button><button class=\"ds-hoje-receita\" type=\"button\"><span>Receita</span><strong>R$ 1.200,00</strong><span>Salário · sintético</span></button></div></section>",
+      "css": ".ds-hoje { font-family: Roboto, system-ui, sans-serif; width: 100%; } .ds-hoje-title { color: #1c1916; font-size: 1.25rem; font-weight: 500; margin: 0 0 0.5rem; } .ds-hoje-split { display: grid; grid-template-columns: 1fr 1fr; width: 100%; } .ds-hoje-gasto, .ds-hoje-receita { align-items: flex-start; border: 1px solid #d9d0c4; cursor: pointer; display: flex; flex-direction: column; font-feature-settings: \"tnum\" 1; gap: 0.35rem; min-height: 8rem; padding: 1.25rem 1.5rem; text-align: start; } .ds-hoje-gasto { background: #b85c38; border-color: #b85c38; border-radius: 4px 0 0 4px; color: #f4efe6; } .ds-hoje-receita { background: #f4efe6; border-radius: 0 4px 4px 0; color: #1c1916; } .ds-hoje-gasto span, .ds-hoje-receita span { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; } .ds-hoje-gasto strong, .ds-hoje-receita strong { font-size: 1.25rem; font-weight: 500; } .ds-hoje-gasto:focus-visible, .ds-hoje-receita:focus-visible { outline: 2px solid #c43c2c; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Calendário de parede",
+    "overview": "O Fluxo30 é um app Operate: quem usa tem de achar o controle antes de notar o mundo. O mundo empresta só tipo, paleta, densidade e um movimento-assinatura. O calendário de farmácia/padaria anotado à caneta é esse mundo — papel de mês, célula de hoje pintada, duas tintas que não se misturam.\n\nA cena física é a mesa à noite sob luminária, com o caderno como lugar principal (o telefone existe, mas depois). Isso força um UI claro de papel, não um console grafite nem um internet banking cinza. Roboto permanece a família de trabalho; trocá-la exigiria uma nova decisão de mundo.\n\nEstratégia de cor: Restrained — neutros tintados do papel + duas tintas semânticas (gasto e receita) fazendo trabalho real, nunca decoração. O acento de calendário (vermelho do dia) pinta só o hoje e o estado que precisa de urgência. No código, os temas Vuetify se chamam fluxo30Light e fluxo30Dark.",
+    "keyCharacteristics": [
+      "Papel claro, tinta escura, duas cores de livro, nunca um cinza institucional",
+      "Hoje é a única célula cheia; o resto do mês é grade",
+      "Gastos e receitas são dois territórios; o divisor não mistura os livros",
+      "Densidade de calendário anotado, não de dashboard de cards",
+      "Uma família (Roboto), números tabulares, escala fixa em rem",
+      "Escuro é a sala ao redor do papel, não um console"
+    ],
+    "rules": [
+      { "name": "The Two-Inks Rule", "body": "Gasto e receita nunca compartilham tinta. Se um swatch servir nos dois livros, está errado.", "section": "colors" },
+      { "name": "The Today-Only Rule", "body": "Só a célula Hoje (e o estado de urgência equivalente) leva o carimbo cheio. O resto é papel e filete.", "section": "colors" },
+      { "name": "The Zone Ramp Rule", "body": "Neutros travam numa rampa fechada de passos; ênfase é número, não mais uma cor.", "section": "colors" },
+      { "name": "The Fixed-Scale Rule", "body": "Espécimes de comparação compartilham uma baseline e um tamanho. Nada de cards de totais em escalas misturadas.", "section": "typography" },
+      { "name": "The One-Voice Type Rule", "body": "Uma família. Sem serif de display, sem Stolz, sem a lista de faces genéricas de AI (Playfair, Fraunces, Space Grotesk, etc.).", "section": "typography" },
+      { "name": "The Occupied Band Rule", "body": "O movimento-assinatura (célula Hoje / os dois livros) ganha uma banda de largura total, não um tile entre tiles.", "section": "layout" },
+      { "name": "The Flat-By-Default Rule", "body": "Superfícies em repouso são planas. Sem elevação de dashboard.", "section": "elevation" },
+      { "name": "The One-Decoded Rule", "body": "Só o espécime selecionado vai a cor cheia; o resto fica em papel e filete.", "section": "elevation" },
+      { "name": "The Cell Rule", "body": "Controles e espécimes herdam a lógica da célula (retângulo de grade), não da pílula nem do anel.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do pintar Hoje como a única célula cheia e deixar o resto como grade.",
+      "Do tratar gasto e receita como dois territórios de tinta, com nomes visíveis (fidelidade do livro).",
+      "Do usar Roboto, figuras tabulares, e a mesma escala em qualquer comparação.",
+      "Do deixar o shell e os controles serem os da plataforma (Vuetify); o mundo entra por tipo, paleta, densidade e a faixa Hoje.",
+      "Do registrar temas como fluxo30Light / fluxo30Dark, com gasto, receita e filete como cores custom."
+    ],
+    "donts": [
+      "Don't misturar gasto e receita numa lista única ou numa tinta só.",
+      "Don't parecer internet banking (cinza institucional, denso, feito para gerente).",
+      "Don't copiar Ambtec, Stolz, nem ambtecLight / ambtecDark.",
+      "Don't enviar o padrão da categoria: cards, donut, mint, lista mista de transações.",
+      "Don't usar o calendário como fantasia de layout (papel pautado no lugar de tabela, espiral decorativa). Ele empresta tipo, paleta, densidade e a célula Hoje — só isso.",
+      "Don't pintar o tema escuro de grafite #0d1117 nem de console."
+    ]
+  }
+}
