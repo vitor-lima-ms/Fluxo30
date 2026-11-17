@@ -9,10 +9,8 @@ export default function errorHandler(errorData: IError, e: unknown) {
   } else if (e instanceof Error) {
     errorData.code = e.name;
     errorData.message = e.message;
-    errorData.statusCode = undefined;
   } else {
     errorData.code = 'UNKNOW_ERROR';
     errorData.message = 'Erro desconhecido';
-    errorData.statusCode = undefined;
   }
 }
